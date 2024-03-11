@@ -15,8 +15,6 @@ original_data = original_data.drop(columns = ['NCP', 'SCC', 'TUE'])
 
 # Load the saved model
 model_path = 'final_model.pkl'
-with open('final_model.pkl', 'rb') as model_file:
-    loaded_model = pickle.load(model_file)
 
 # Streamlit App
 def main():
