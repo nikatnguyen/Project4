@@ -2,6 +2,7 @@
 import streamlit as st
 import pickle
 import pandas as pd
+import sklearn
 
 #Load original data
 original_data = pd.read_csv('https://raw.githubusercontent.com/nikatnguyen/Project4/main/Resources/ObesityDataSet.csv')
