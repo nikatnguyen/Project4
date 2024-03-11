@@ -71,10 +71,8 @@ def main():
       st.subheader("Prediction:")
       st.write(prediction)
 
-   st.write("""Dataset from Kaggle: https://www.kaggle.com/datasets/aravindpcoder/obesity-or-cvd-risk-classifyregressorcluster
+    st.write("""Dataset from Kaggle: https://www.kaggle.com/datasets/aravindpcoder/obesity-or-cvd-risk-classifyregressorcluster
     """)
-
-
 if __name__ == "__main__":
     main()
 
