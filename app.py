@@ -9,11 +9,13 @@ original_data = original_data.drop(columns = ['NCP', 'SCC', 'TUE'])
 
 
 # Load the saved model
+model_path = 'final_model.pkl'
 with open('final_model.pkl', 'rb') as model_file:
     loaded_model = pickle.load(model_file)
 
 # Streamlit App
 def main():
+
     st.title("Predicting Obesity Using Machine Learning Model")
     st.write("""This app allows you to predict an obesity diagnostic using a series of questions based on a dataset taken from Kaggle
     """)
@@ -41,6 +43,10 @@ def main():
     calc = st.sidebar.checkbox("Do you frequently consume alcohol?", frequency_options)
     smoke = st.sidebar.checkbox("Do you smoke?", tf_options)
     transportation = st.sidebar.checkbox("What mode of transportation do you generally take each day?", transport_options)
+
+    #Load model
+    with open(model_path, 'rb') as model_file:
+        loaded_model = pickle.load(model_file)
 
     # Make predictions with the loaded model
     if st.form_submit_button("Predict"):
