@@ -2,7 +2,11 @@
 import streamlit as st
 import pickle
 import pandas as pd
-import sklearn
+import sklearn as skl
+from sklearn.model_selection import train_test_split
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.model_selection import GridSearchCV
+from sklearn.metrics import accuracy_score, confusion_matrix, classification_report
 
 #Load original data
 original_data = pd.read_csv('https://raw.githubusercontent.com/nikatnguyen/Project4/main/Resources/ObesityDataSet.csv')
