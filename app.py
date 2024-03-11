@@ -5,7 +5,7 @@ import pandas as pd
 
 #Load original data
 original_data = pd.read_csv('https://raw.githubusercontent.com/nikatnguyen/Project4/main/Resources/ObesityDataSet.csv')
-original_data = original_data.drop(columns = 'NCP', 'SCC', 'TUE')
+original_data = original_data.drop(columns = ['NCP', 'SCC', 'TUE'])
 
 
 # Load the saved model
