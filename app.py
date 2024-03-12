@@ -30,7 +30,7 @@ def main():
     # Example input features (you can replace this with your actual input fields)
     age = st.number_input("How old are you?", 0.0, 100.0, 50.0)
     height = st.number_input("What is your height in meters?", 0.0, 2.0)
-    weight = st.sidebar.number_input("What is your weight in kilograms?", 0.0, 200.0, 50.0)
+    weight = st.number_input("What is your weight in kilograms?", 0.0, 200.0, 50.0)
     
     favc_question = "Do you frequently consume high caloric foods? (Frequently meaning 3 or more times a day)"
     favc_option_y = st.checkbox("Yes")
