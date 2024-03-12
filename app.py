@@ -10,7 +10,7 @@ from sklearn.metrics import accuracy_score, confusion_matrix, classification_rep
 
 #Load original data
 original_data = pd.read_csv('https://raw.githubusercontent.com/nikatnguyen/Project4/main/Resources/ObesityDataSet.csv')
-original_data = original_data.drop(columns = ['NCP', 'SCC', 'TUE'])
+original_data = original_data.drop(columns = ['NCP', 'SCC', 'TUE', 'NObeyesdad'])
 
 
 # Load the saved models
