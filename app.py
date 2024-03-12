@@ -20,10 +20,10 @@ scaler_path = 'scaler.pkl'
 # Streamlit App
 def main():
 
-    st.title("Predicting Obesity Using Machine Learning Model")
-    st.write("""This app allows you to predict an obesity diagnostic using a series of questions based on a dataset taken from Kaggle surveying people ages 14-61 from Mexico, Peru, and Columbia with diverse eating habits and physical conditions.  
+    st.title("Predicting BMI Indexes Using Machine Learning Model")
+    st.write("""This app allows you to predict your BMI index using a series of questions based on a dataset taken from Kaggle surveying people ages 14-61 from Mexico, Peru, and Columbia with diverse eating habits and physical conditions. It does not calculate the actual BMI score of users but is designed to give users an idea of their physical health  
     """)
-    st.write("""DISCLAIMER: This app is designed for users concerned about their physical health, but it should not be taken as a formal medical diagnosis. Consult your doctor or see linked resources at the bottom of this questionnaire for more information""")
+    st.write("""DISCLAIMER: This app is designed for users concerned about their physical health, but it should not be taken as a formal medical diagnosis of an individual's health. Consult your doctor or see linked resources at the bottom of this questionnaire for more information""")
 
     # Sidebar with user input
     st.header("Questions")
@@ -150,7 +150,7 @@ def main():
         st.write("""Based on your results, your BMI index seems to fall below 18.5""")
       if prediction == 1:
         st.write("Normal weight")
-        st.write("""Based on your results, your BMI index seems to range from 18.5-24.9""")
+        st.write("""Based on your results, your BMI index seems to fall within the range of 18.5-24.9""")
       if prediction == 2:
         st.write("Obesity Type 1")
         st.write("""Based on your results, your BMI index seems to be above 30""")
@@ -162,13 +162,14 @@ def main():
         st.write("""Based on your results, your BMI index seems to be above 30""")
       if prediction == 5:
         st.write("Overweight Level 1")
-        st.write("""Based on your results, your BMI index seems to range from 25.0-29.9""")
+        st.write("""Based on your results, your BMI index seems to fall within the range of 25.0-29.9""")
       if prediction == 6:
         st.write("Overweight Level 2")
-        st.write("""Based on your results, your BMI index seems to range from 25.0-29.9""")
+        st.write("""Based on your results, your BMI index seems to fall within the range of 25.0-29.9""")
 
     st.header("Resources For More Information")
     st.markdown('- [About Adult BMI (CDC)](https://www.cdc.gov/healthyweight/assessing/bmi/adult_bmi/index.html)', unsafe_allow_html=True)
+    st.markdown('-[Body Mass Index (CDC)](https://www.cdc.gov/healthyweight/assessing/bmi/index.html#:~:text=Calculate%20Your%20BMI&text=Body%20Mass%20Index%20(BMI)%20is,or%20health%20of%20an%20individual.', unsafe_allow_html=True)
     st.markdown('- [The Impact of Obesity on Your Body (American Society for Metabolic and Bariatric Surgery)](https://asmbs.org/patients/impact-of-obesity/)', unsafe_allow_html=True)
     st.markdown('- [Understanding Obesity (Obesity Action Coalition)](https://www.obesityaction.org/get-educated/public-resources/brochures-guides/understanding-obesity-brochure/)', unsafe_allow_html=True)
     st.markdown('- [Why Does Weight Bias Matter (Obesity Care Week)](https://www.obesitycareweek.org/wp-content/uploads/2023/02/OCW-Why-Does-Weight-Bias-Matter-1.pdf)', unsafe_allow_html=True)
