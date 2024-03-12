@@ -147,16 +147,25 @@ def main():
       st.subheader("Prediction:")
       if prediction == 0:
         st.write("Underweight")
+        st.write("""Based on your results, your BMI index seems to fall below 18.5""")
       if prediction == 1:
         st.write("Normal weight")
+        st.write("""Based on your results, your BMI index seems to range from 18.5-24.9""")
       if prediction == 2:
         st.write("Obesity Type 1")
+        st.write("""Based on your results, your BMI index seems to be above 30""")
       if prediction == 3:
         st.write("Obesity Type 2")
+        st.write("""Based on your results, your BMI index seems to be above 30""")
       if prediction == 4:
         st.write("Obesity Type 3")
+        st.write("""Based on your results, your BMI index seems to be above 30""")
       if prediction == 5:
-        st.write("Overweight Level")
+        st.write("Overweight Level 1")
+        st.write("""Based on your results, your BMI index seems to range from 25.0-29.9""")
+      if prediction == 6:
+        st.write("Overweight Level 2")
+        st.write("""Based on your results, your BMI index seems to range from 25.0-29.9""")
 
     st.header("Resources For More Information")
     st.markdown('- [The Impact of Obesity on Your Body (American Society for Metabolic and Bariatric Surgery)](https://asmbs.org/patients/impact-of-obesity/)', unsafe_allow_html=True)
