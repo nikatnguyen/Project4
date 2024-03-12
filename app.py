@@ -27,6 +27,7 @@ def main():
 
     # Sidebar with user input
     st.header("Questions")
+    st.write("""Selecting multiple checkboxes in each question will result in an error.""")
 
     
     # Example input features (you can replace this with your actual input fields)
