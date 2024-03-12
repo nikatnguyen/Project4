@@ -48,16 +48,6 @@ def main():
     caec_sometimes = st.checkbox("Sometimes", key="caecsome")
     caec_no = st.checkbox("Never", key="caecno")
     
-    ch20_question = st.write("How often do you drink water each day?")
-    ch20_frequently = st.checkbox("Frequently", key="ch20freq")
-    if ch20_frequently: 
-      ch20 = "Frequently"
-    ch20_sometimes = st.checkbox("Sometimes", key="ch20sometimes")
-    if ch20_sometimes:
-      ch20 = "Sometimes"
-    ch20_no = st.checkbox("Never", key="ch20no")
-    if ch20_no:
-      ch20 = "No"
 
     faf = st.number_input("How frequently do you exercise each day?", 0, 3, 2)
     ch2o = st.select_slider("How often do you drink water each day? (3 is frequently or about 6-8 cups a day, 2 is less frequently meaning 3-5 cups a day, 1 is 1-2 cups a day, and 0 is none)", options=[0, 1, 2, 3])
@@ -87,14 +77,13 @@ def main():
         loaded_model = pickle.load(model_file)
 
     # Make predictions with the loaded model
-    st.button("Predict")
     if st.button("Predict"):
       user_data = pd.DataFrame({
         'Age': [age],
         'Height': [height],
         'Weight': [weight],
         'FCVC': [fcvc],
-        'CH20': [ch20],
+        'CH2O': [ch2o],
         'FAF': [faf],
         'FAVC_yes': [favc],
         "CAEC_Frequently": [caec_frequently],
@@ -117,7 +106,7 @@ def main():
       st.write(prediction)
 
     st.write("""Dataset from Kaggle: https://www.kaggle.com/datasets/aravindpcoder/obesity-or-cvd-risk-classifyregressorcluster
-    """)
+    """) 
 if __name__ == "__main__":
     main()
 
