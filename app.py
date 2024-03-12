@@ -139,8 +139,8 @@ def main():
       combined_df = pd.concat([original_data, user_data], axis = 0)
       combined_df = pd.get_dummies(combined_df, drop_first = True)
       user_data = combined_df.iloc[-1, :]
+      user_data = pd.DataFrame(user_data.values.reshape(1, -1), columns=combined_df.columns)
       user_data = X_scaler.transform(user_data)
-      user_data = user_data.to_numpy().reshape(1, -1)
       prediction = loaded_model.predict(user_data)
       # Display the prediction
       st.subheader("Prediction:")
