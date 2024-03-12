@@ -2,7 +2,6 @@
 import streamlit as st
 import pickle
 import pandas as pd
-import numpy as np
 import sklearn as skl
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
@@ -141,7 +140,7 @@ def main():
       combined_df = pd.get_dummies(combined_df, drop_first = True)
       user_data = combined_df.iloc[-1, :]
       user_data = X_scaler.transform(user_data)
-      reshaped_user_data = data.reshape(1, -1)
+      reshaped_user_data = user_data.reshape(1, -1)
       prediction = loaded_model.predict(reshaped_user_data)
       # Display the prediction
       st.subheader("Prediction:")
