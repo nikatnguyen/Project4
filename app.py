@@ -29,9 +29,13 @@ def main():
 
     
     # Example input features (you can replace this with your actual input fields)
-    gender = st.write("What is your sex assigned at birth?")
+    gender_question = st.write("What is your sex assigned at birth?")
     male = st.checkbox("Male", key="male")
+    if male:
+      gender = True
     female = st.checkbox("Female", key="fem")
+    if female:
+      gender = False
     age = st.number_input("How old are you?", 0.0, 100.0, 50.0)
     height = st.number_input("What is your height in meters?", 0.0, 2.0)
     weight = st.number_input("What is your weight in kilograms?", 0.0, 200.0, 50.0)
@@ -54,6 +58,17 @@ def main():
 
     faf = st.number_input("How frequently do you exercise each day?", 0, 3, 2)
     ch2o = st.select_slider("How often do you drink water each day? (3 is frequently or about 6-8 cups a day, 2 is less frequently meaning 3-5 cups a day, 1 is 1-2 cups a day, and 0 is none)", options=[0, 1, 2, 3])
+    
+    family_question = st.write("Do you have a family history with obesity?")
+    family_true = st.checkbox("Yes", key="famtrue")
+    if family_true:
+      family = True
+    family_false = st.checkbox("No", key="famfalse")
+    if family_false:
+       family = False
+    family_unsure = st.checkbox("Unsure", key="famunsure")
+    if family_unsure:
+       family = False
     
     calc_question = st.write("Do you frequently consume alcohol? (Frequently meaning 3 or more glases a day)")
     calc_frequently = st.checkbox("Frequently", key="calcfreq")
@@ -90,6 +105,7 @@ def main():
         'CH2O': [ch2o],
         'FAF': [faf],
         'Gender_Male': [male],
+        'family_history_with_overweight_yes': [family],
         'FAVC_yes': [favc],
         "CAEC_Frequently": [caec_frequently],
         "CALC_Sometimes":  [caec_sometimes],
