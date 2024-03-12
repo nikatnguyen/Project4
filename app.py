@@ -123,7 +123,7 @@ def main():
     # Make predictions with the loaded model
     if st.button("Predict"):
       user_data = pd.DataFrame({
-        'Gender': [male],
+        'Gender': [gender],
         'Age': [age],
         'Height': [height],
         'Weight': [weight],
