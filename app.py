@@ -13,8 +13,9 @@ original_data = pd.read_csv('https://raw.githubusercontent.com/nikatnguyen/Proje
 original_data = original_data.drop(columns = ['NCP', 'SCC', 'TUE'])
 
 
-# Load the saved model
-model_path = 'final_model.pkl'
+# Load the saved models
+fin_model_path = 'final_model.pkl'
+scaler_path = 'scaler.pkl'
 
 # Streamlit App
 def main():
@@ -28,6 +29,9 @@ def main():
 
     
     # Example input features (you can replace this with your actual input fields)
+    gender = st.write("What is your sex assigned at birth?")
+    male = st.checkbox("Male", key="male")
+    female = st.checkbox("Female", key="fem")
     age = st.number_input("How old are you?", 0.0, 100.0, 50.0)
     height = st.number_input("What is your height in meters?", 0.0, 2.0)
     weight = st.number_input("What is your weight in kilograms?", 0.0, 200.0, 50.0)
@@ -41,7 +45,6 @@ def main():
       favc = 0
     
     fcvc = st.select_slider("How frequently do you consume vegetables each day? (3 meaning at more than 2 servings a day, 2 meaning around 2 servings a day, 1 meaning one serving a day, 0 being none)", options=[0, 1, 2, 3])
-    ncp = st.number_input("How many main meals do you generally have each day?", 0, 4, 2)
     
     caec_question = st.write("How often do you consume food in between meals?")
     caec_frequently = st.checkbox("Frequently", key="caecf")
@@ -73,9 +76,10 @@ def main():
     mtrans_other = st.checkbox("Other", key="other")
 
     #Load model
-    with open(model_path, 'rb') as model_file:
+    with open(fin_model_path, 'rb') as model_file:
         loaded_model = pickle.load(model_file)
-
+    with open(scaler_pathpath, 'rb') as model_file:
+        X_scaler = pickle.load(model_file)
     # Make predictions with the loaded model
     if st.button("Predict"):
       user_data = pd.DataFrame({
@@ -85,6 +89,7 @@ def main():
         'FCVC': [fcvc],
         'CH2O': [ch2o],
         'FAF': [faf],
+        'Gender_Male': [male],
         'FAVC_yes': [favc],
         "CAEC_Frequently": [caec_frequently],
         "CALC_Sometimes":  [caec_sometimes],
@@ -100,6 +105,7 @@ def main():
       combined_df = pd.concat([original_data, user_data], axis = 0)
       combined_df = pd.get_dummies(combined_df, drop_first = True)
       user_data = combined_df.iloc[-1, :]
+      user_data = X_scaler.transform(user_data)
       prediction = loaded_model.predict(user_data)
       # Display the prediction
       st.subheader("Prediction:")
