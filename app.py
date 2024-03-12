@@ -127,7 +127,7 @@ def main():
         'Age': [age],
         'Height': [height],
         'Weight': [weight],
-        'family_history_with_overweight_yes': [family],
+        'family_history_with_overweight': [family],
         'FAVC': [favc],
         'FCVC': [fcvc],
         'CAEC': [caec],
@@ -137,7 +137,7 @@ def main():
         'CALC': [calc],
         "MTRANS": [mtrans]})
       combined_df = pd.concat([original_data, user_data], axis = 0)
-      combined_df = pd.get_dummies(combined_df, drop_first = True)
+      combined_df = pd.get_dummies(combined_df, columns = ['Gender', 'family_history_with_overweight', 'FAVC', 'CAEC', 'SMOKE', 'CALC', 'MTRANS'], drop_first = True)
       user_data = combined_df.iloc[-1, :]
       user_data = pd.DataFrame(user_data.values.reshape(1, -1), columns=combined_df.columns)
       user_data = X_scaler.transform(user_data)
