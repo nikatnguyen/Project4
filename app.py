@@ -140,8 +140,8 @@ def main():
       combined_df = pd.get_dummies(combined_df, drop_first = True)
       user_data = combined_df.iloc[-1, :]
       user_data = X_scaler.transform(user_data)
-      reshaped_user_data = user_data.reshape(-1, 1)
-      prediction = loaded_model.predict(reshaped_user_data)
+      user_data = user_data.reshape(-1, 1)
+      prediction = loaded_model.predict(user_data)
       # Display the prediction
       st.subheader("Prediction:")
       st.write(prediction)
