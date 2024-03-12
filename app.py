@@ -78,7 +78,7 @@ def main():
     #Load model
     with open(fin_model_path, 'rb') as model_file:
         loaded_model = pickle.load(model_file)
-    with open(scaler_pathpath, 'rb') as model_file:
+    with open(scaler_path, 'rb') as model_file:
         X_scaler = pickle.load(model_file)
     # Make predictions with the loaded model
     if st.button("Predict"):
