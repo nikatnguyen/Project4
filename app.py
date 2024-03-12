@@ -144,7 +144,18 @@ def main():
       prediction = loaded_model.predict(user_data)
       # Display the prediction
       st.subheader("Prediction:")
-      st.write(prediction)
+      if prediction == 0:
+        st.write("Underweight")
+      if prediction == 1:
+        st.write("Normal weight")
+      if prediction == 2:
+        st.write("Obesity Type 1")
+      if prediction == 3:
+        st.write("Obesity Type 2")
+      if prediction == 4:
+        st.write("Obesity Type 3")
+      if prediction == 5:
+        st.write("Overweight Level")
 
     st.write("""Dataset from Kaggle: https://www.kaggle.com/datasets/aravindpcoder/obesity-or-cvd-risk-classifyregressorcluster
     """) 
