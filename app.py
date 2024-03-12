@@ -32,7 +32,7 @@ def main():
     height = st.number_input("What is your height in meters?", 0.0, 2.0)
     weight = st.number_input("What is your weight in kilograms?", 0.0, 200.0, 50.0)
     
-    favc_question = "Do you frequently consume high caloric foods? (Frequently meaning 3 or more times a day)"
+    favc_question = st.write("Do you frequently consume high caloric foods? (Frequently meaning 3 or more times a day)")
     favc_option_y = st.checkbox("Yes")
     if favc_option_y:
       favc = 1
@@ -43,12 +43,12 @@ def main():
     fcvc = st.select_slider("How frequently do you consume vegetables each day? (3 meaning at more than 2 servings a day, 2 meaning around 2 servings a day, 1 meaning one serving a day, 0 being none)", options=[0, 1, 2, 3])
     ncp = st.number_input("How many main meals do you generally have each day?", 0, 4, 2)
     
-    caec_question = "How often do you consume food in between meals?"
+    caec_question = st.write("How often do you consume food in between meals?")
     caec_frequently = st.checkbox("Frequently")
     caec_sometimes = st.checkbox("Sometimes")
     caec_no = st.checkbox("Never")
     
-    ch20_question = "How often do you drink water each day?"
+    ch20_question = st.write("How often do you drink water each day?")
     ch20_frequently = st.checkbox("Frequently")
     if ch20_frequently: 
       ch20 = "Frequently"
@@ -62,12 +62,12 @@ def main():
     faf = st.number_input("How frequently do you exercise each day?", 0, 3, 2)
     ch2o = st.select_slider("How often do you drink water each day? (3 is frequently or about 6-8 cups a day, 2 is less frequently meaning 3-5 cups a day, 1 is 1-2 cups a day, and 0 is none)", options=[0, 1, 2, 3])
     
-    calc_question = "Do you frequently consume alcohol? (Frequently meaning 3 or more glases a day)"
+    calc_question = st.write("Do you frequently consume alcohol? (Frequently meaning 3 or more glases a day)")
     calc_frequently = st.checkbox("Frequently")
     calc_sometimes = st.checkbox("Sometimes")
     calc_no = st.checkbox("Never")
 
-    smoke_question = "Do you smoke?"
+    smoke_question = st.write("Do you smoke?")
     smoke_yes = st.checkbox("Yes")
     if smoke_yes:
       smoke = 1
@@ -75,7 +75,7 @@ def main():
     if smoke_no:
       smoke = 0
     
-    transportation_question = "What mode of transportation do you generally take each day?"
+    transportation_question = st.write("What mode of transportation do you generally take each day?")
     mtrans_bike = st.checkbox("Bike")
     mtrans_motorbike = st.checkbox("Motorbike")
     mtrans_public = st.checkbox("Public Transportation")
