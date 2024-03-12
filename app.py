@@ -20,8 +20,8 @@ scaler_path = 'scaler.pkl'
 # Streamlit App
 def main():
 
-    st.title("Predicting BMI Indexes Using Machine Learning Model")
-    st.write("""This app allows you to predict your BMI index using a series of questions based on a dataset taken from Kaggle surveying people ages 14-61 from Mexico, Peru, and Columbia with diverse eating habits and physical conditions. It does not calculate the actual BMI score of users but is designed to give users an idea of their physical health  
+    st.title("Predicting BMI Ranges Using Machine Learning Model")
+    st.write("""This app allows you to predict your BMI Range using a series of questions based on a dataset taken from Kaggle surveying people ages 14-61 from Mexico, Peru, and Columbia with diverse eating habits and physical conditions. It does not calculate the actual BMI score of users but is designed to give users an idea of their physical health  
     """)
     st.write("""DISCLAIMER: This app is designed for users concerned about their physical health, but it should not be taken as a formal medical diagnosis of an individual's health. Consult your doctor or see linked resources at the bottom of this questionnaire for more information""")
 
@@ -148,25 +148,25 @@ def main():
       st.subheader("Prediction:")
       if prediction == 0:
         st.write("Underweight")
-        st.write("""Based on your results, your BMI index seems to fall below 18.5""")
+        st.write("""Based on your results, your BMI score seems to fall below 18.5""")
       if prediction == 1:
         st.write("Normal weight")
-        st.write("""Based on your results, your BMI index seems to fall within the range of 18.5-24.9""")
+        st.write("""Based on your results, your BMI score seems to fall within the range of 18.5-24.9""")
       if prediction == 2:
         st.write("Obesity Type 1")
-        st.write("""Based on your results, your BMI index seems to be above 30""")
+        st.write("""Based on your results, your BMI score seems to be above 30""")
       if prediction == 3:
         st.write("Obesity Type 2")
-        st.write("""Based on your results, your BMI index seems to be above 30""")
+        st.write("""Based on your results, your BMI score seems to be above 30""")
       if prediction == 4:
         st.write("Obesity Type 3")
-        st.write("""Based on your results, your BMI index seems to be above 30""")
+        st.write("""Based on your results, your BMI score seems to be above 30""")
       if prediction == 5:
         st.write("Overweight Level 1")
-        st.write("""Based on your results, your BMI index seems to fall within the range of 25.0-29.9""")
+        st.write("""Based on your results, your BMI score seems to fall within the range of 25.0-29.9""")
       if prediction == 6:
         st.write("Overweight Level 2")
-        st.write("""Based on your results, your BMI index seems to fall within the range of 25.0-29.9""")
+        st.write("""Based on your results, your BMI score seems to fall within the range of 25.0-29.9""")
 
     st.header("Resources For More Information")
     st.markdown('- [About Adult BMI (CDC)](https://www.cdc.gov/healthyweight/assessing/bmi/adult_bmi/index.html)', unsafe_allow_html=True)
