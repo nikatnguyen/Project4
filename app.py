@@ -33,10 +33,10 @@ def main():
     weight = st.number_input("What is your weight in kilograms?", 0.0, 200.0, 50.0)
     
     favc_question = st.write("Do you frequently consume high caloric foods? (Frequently meaning 3 or more times a day)")
-    favc_option_y = st.checkbox("Yes")
+    favc_option_y = st.checkbox("Yes", key="favcy")
     if favc_option_y:
       favc = 1
-    favc_option_n = st.checkbox("No")
+    favc_option_n = st.checkbox("No", key="favcn")
     if favc_option_n:
       favc = 0
     
@@ -44,9 +44,9 @@ def main():
     ncp = st.number_input("How many main meals do you generally have each day?", 0, 4, 2)
     
     caec_question = st.write("How often do you consume food in between meals?")
-    caec_frequently = st.checkbox("Frequently")
-    caec_sometimes = st.checkbox("Sometimes")
-    caec_no = st.checkbox("Never")
+    caec_frequently = st.checkbox("Frequently", key="caecf")
+    caec_sometimes = st.checkbox("Sometimes", key="caecsome")
+    caec_no = st.checkbox("Never", key="caecno")
     
     ch20_question = st.write("How often do you drink water each day?")
     ch20_frequently = st.checkbox("Frequently", key="ch20freq")
@@ -68,26 +68,26 @@ def main():
     calc_no = st.checkbox("Never", key="calcno")
 
     smoke_question = st.write("Do you smoke?")
-    smoke_yes = st.checkbox("Yes")
+    smoke_yes = st.checkbox("Yes", key="smokey")
     if smoke_yes:
       smoke = 1
-    smoke_no = st.checkbox("No")
+    smoke_no = st.checkbox("No", key="smokeno")
     if smoke_no:
       smoke = 0
     
     transportation_question = st.write("What mode of transportation do you generally take each day?")
-    mtrans_bike = st.checkbox("Bike")
-    mtrans_motorbike = st.checkbox("Motorbike")
-    mtrans_public = st.checkbox("Public Transportation")
-    mtrans_walk = st.checkbox("Walking")
-    mtrans_other = st.checkbox("Other")
+    mtrans_bike = st.checkbox("Bike", key="bike")
+    mtrans_motorbike = st.checkbox("Motorbike", key="motorbike")
+    mtrans_public = st.checkbox("Public Transportation", key="publictrans")
+    mtrans_walk = st.checkbox("Walking", key="walk")
+    mtrans_other = st.checkbox("Other", key="other")
 
     #Load model
     with open(model_path, 'rb') as model_file:
         loaded_model = pickle.load(model_file)
 
     # Make predictions with the loaded model
-    st.form_submit_button("Predit")
+    st.form_submit_button("Predict")
     if st.form_submit_button("Predict"):
       user_data = pd.DataFrame({
         'Age': [age],
