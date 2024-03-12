@@ -39,11 +39,11 @@ def main():
     
     favc_question = st.sidebar("Do you frequently consume high caloric foods? (Frequently meaning 3 or more times a day)")
     favc_option_y = st.sidebar.checkbox("Yes")
-      if favc_option_y:
-       favc = 1
+    if favc_option_y:
+      favc = 1
     favc_option_n = st.sidebar.checkbox("No")
-      if favc_option_n:
-       favc = 0
+    if favc_option_n:
+      favc = 0
     
     fcvc = st.sidebar.select_slider("How frequently do you consume vegetables each day? (3 meaning at more than 2 servings a day, 2 meaning around 2 servings a day, 1 meaning one serving a day, 0 being none)", options=[0, 1, 2, 3])
     ncp = st.sidebar.number_input("How many main meals do you generally have each day?", 0, 4, 2)
@@ -55,14 +55,14 @@ def main():
     
     ch20_question = st.sidebar("How often do you drink water each day?")
     ch20_frequently = st.sidebar.checkbox("Frequently")
-      if ch20_frequently: 
-       ch20 = "Frequently"
+    if ch20_frequently: 
+      ch20 = "Frequently"
     ch20_sometimes = st.sidebar.checkbox("Sometimes")
-      if ch20_sometimes:
-        ch20 = "Sometimes"
+    if ch20_sometimes:
+      ch20 = "Sometimes"
     ch20_no = st.sidebar.checkbox("Never")
-      if ch20_no:
-        ch20 = "No"
+    if ch20_no:
+      ch20 = "No"
 
     faf = st.sidebar.number_input("How frequently do you exercise each day?", 0, 3, 2)
     ch2o = st.sidebar.select_slider("How often do you drink water each day? (3 is frequently or about 6-8 cups a day, 2 is less frequently meaning 3-5 cups a day, 1 is 1-2 cups a day, and 0 is none)", options=[0, 1, 2, 3])
@@ -74,11 +74,11 @@ def main():
 
     smoke_question = st.sidebar("Do you smoke?")
     smoke_yes = st.sidebar.checkbox("Yes")
-      if smoke_yes:
-       smoke = 1
+    if smoke_yes:
+      smoke = 1
     smoke_no = st.sidebar.checkbox("No")
-      if smoke_no:
-        smoke = 0
+    if smoke_no:
+      smoke = 0
     
     transportation_question = st.sidebar("What mode of transportation do you generally take each day?", options=transport_options)
     mtrans_bike = st.sidebar.checkbox("Bike")
@@ -93,33 +93,33 @@ def main():
 
     # Make predictions with the loaded model
     st.form_submit_button("Predit")
-      if st.form_submit_button("Predict"):
-        user_data = pd.DataFrame({
-          'Age': [age],
-          'Height': [height],
-          'Weight': [weight],
-          'FCVC': [fcvc],
-          'CH20': [ch20],
-          'FAF': [faf],
-          'FAVC_yes': [favc],
-          "CAEC_Frequently": [caec_frequently],
-          "CALC_Sometimes":  [caec_sometimes],
-          "CAEC_no": [caec_no],
-          "SMOKE_yes":  [smoke],
-          "CALC_Frequently":  [calc_frequently],
-          "CALC_Sometimes":  [calc_sometimes],
-          "CALC_no":  [calc_no],
-          "MTRANS_Bike":  [mtrans_bike],
-          "MTRANS_Motorbike":  [mtrans_motorbike],
-          "MTRANS_Public_Transportation":  [mtrans_public],
-          "MTRANS_Walking":  [mtrans_walk] })
-        combined_df = pd.concat([original_data, user_data], axis = 0)
-        combined_df = pd.get_dummies(combined_df, drop_first = True)
-        user_data = combined_df.iloc[-1, :]
-        prediction = loaded_model.predict(user_data)
-        # Display the prediction
-        st.subheader("Prediction:")
-        st.write(prediction)
+    if st.form_submit_button("Predict"):
+      user_data = pd.DataFrame({
+        'Age': [age],
+        'Height': [height],
+        'Weight': [weight],
+        'FCVC': [fcvc],
+        'CH20': [ch20],
+        'FAF': [faf],
+        'FAVC_yes': [favc],
+        "CAEC_Frequently": [caec_frequently],
+        "CALC_Sometimes":  [caec_sometimes],
+        "CAEC_no": [caec_no],
+        "SMOKE_yes":  [smoke],
+        "CALC_Frequently":  [calc_frequently],
+        "CALC_Sometimes":  [calc_sometimes],
+        "CALC_no":  [calc_no],
+        "MTRANS_Bike":  [mtrans_bike],
+        "MTRANS_Motorbike":  [mtrans_motorbike],
+        "MTRANS_Public_Transportation":  [mtrans_public],
+        "MTRANS_Walking":  [mtrans_walk] })
+      combined_df = pd.concat([original_data, user_data], axis = 0)
+      combined_df = pd.get_dummies(combined_df, drop_first = True)
+      user_data = combined_df.iloc[-1, :]
+      prediction = loaded_model.predict(user_data)
+      # Display the prediction
+      st.subheader("Prediction:")
+      st.write(prediction)
 
     st.write("""Dataset from Kaggle: https://www.kaggle.com/datasets/aravindpcoder/obesity-or-cvd-risk-classifyregressorcluster
     """)
