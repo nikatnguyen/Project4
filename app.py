@@ -36,16 +36,16 @@ def main():
     age = st.sidebar.number_input("How old are you?", 0.0, 100.0, 50.0)
     height = st.sidebar.number_input("What is your height in meters?", 0.0, 2.0)
     weight = st.sidebar.number_input("What is your weight in kilograms?", 0.0, 200.0, 50.0)
-    favc = st.sidebar.selectbox("Do you frequently consume high caloric foods?", yn_options)
+    favc = st.sidebar.selectbox("Do you frequently consume high caloric foods?", options=yn_options)
     fcvc = st.sidebar.select_slider("How frequently do you consume vegetables each day? (3 meaning at more than 2 servings a day, 2 meaning around 2 servings a day, 1 meaning one serving a day, 0 being none)", options=[0, 1, 2, 3])
     ncp = st.sidebar.number_input("How many main meals do you generally have each day?", 0, 4, 2)
-    caec = st.sidebar.checkbox("How often do you consume food in between meals?", frequency_options)
-    ch20 = st.sidebar.checkbox("How often do you drink alcohol each day?", frequency_options)
+    caec = st.sidebar.checkbox("How often do you consume food in between meals?", options=frequency_options)
+    ch20 = st.sidebar.checkbox("How often do you drink alcohol each day?", options=frequency_options)
     faf = st.sidebar.number_input("How frequently do you exercise each day?", 0, 3, 2)
     ch2o = st.sidebar.select_slider("How often do you drink water each day? (3 is frequently or about 6-8 cups a day, 2 is less frequently meaning 3-5 cups a day, 1 is 1-2 cups a day, and 0 is none)", options=[0, 1, 2, 3])
-    calc = st.sidebar.checkbox("Do you frequently consume alcohol?", frequency_options)
-    smoke = st.sidebar.checkbox("Do you smoke?", tf_options)
-    transportation = st.sidebar.checkbox("What mode of transportation do you generally take each day?", transport_options)
+    calc = st.sidebar.checkbox("Do you frequently consume alcohol?", options=frequency_options)
+    smoke = st.sidebar.checkbox("Do you smoke?", options=tf_options)
+    transportation = st.sidebar.checkbox("What mode of transportation do you generally take each day?", options=transport_options)
 
     #Load model
     with open(model_path, 'rb') as model_file:
