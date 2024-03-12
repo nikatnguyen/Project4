@@ -24,68 +24,63 @@ def main():
     """)
 
     # Sidebar with user input
-    st.sidebar.header("Questionnaire")
+    st.header("Questionnaire")
 
-    #Defining options for checkboxes
-    yn_options = ["Yes", "No"]
-    tf_options = ["True", "False"]
-    frequency_options = ["Frequently", "Sometimes", "no"]
-    transport_options = ["Bike", "Motobike", "Public Transportation", "Waking", "Automobile"]
-
+    
     # Example input features (you can replace this with your actual input fields)
-    age = st.sidebar.number_input("How old are you?", 0.0, 100.0, 50.0)
-    height = st.sidebar.number_input("What is your height in meters?", 0.0, 2.0)
+    age = st.number_input("How old are you?", 0.0, 100.0, 50.0)
+    height = st.number_input("What is your height in meters?", 0.0, 2.0)
     weight = st.sidebar.number_input("What is your weight in kilograms?", 0.0, 200.0, 50.0)
     
-    favc_question = st.sidebar("Do you frequently consume high caloric foods? (Frequently meaning 3 or more times a day)")
-    favc_option_y = st.sidebar.checkbox("Yes")
+    favc_question = "Do you frequently consume high caloric foods? (Frequently meaning 3 or more times a day)"
+    favc_option_y = st.checkbox("Yes")
     if favc_option_y:
       favc = 1
-    favc_option_n = st.sidebar.checkbox("No")
+    favc_option_n = st.checkbox("No")
     if favc_option_n:
       favc = 0
     
-    fcvc = st.sidebar.select_slider("How frequently do you consume vegetables each day? (3 meaning at more than 2 servings a day, 2 meaning around 2 servings a day, 1 meaning one serving a day, 0 being none)", options=[0, 1, 2, 3])
-    ncp = st.sidebar.number_input("How many main meals do you generally have each day?", 0, 4, 2)
+    fcvc = st.select_slider("How frequently do you consume vegetables each day? (3 meaning at more than 2 servings a day, 2 meaning around 2 servings a day, 1 meaning one serving a day, 0 being none)", options=[0, 1, 2, 3])
+    ncp = st.number_input("How many main meals do you generally have each day?", 0, 4, 2)
     
-    caec_question = st.sidebar("How often do you consume food in between meals?")
-    caec_frequently = st.sidebar.checkbox("Frequently")
-    caec_sometimes = st.sidebar.checkbox("Sometimes")
-    caec_no = st.sidebar.checkbox("Never")
+    caec_question = "How often do you consume food in between meals?"
+    caec_frequently = st.checkbox("Frequently")
+    caec_sometimes = st.checkbox("Sometimes")
+    caec_no = st.checkbox("Never")
     
-    ch20_question = st.sidebar("How often do you drink water each day?")
-    ch20_frequently = st.sidebar.checkbox("Frequently")
+    ch20_question = "How often do you drink water each day?"
+    ch20_frequently = st.checkbox("Frequently")
     if ch20_frequently: 
       ch20 = "Frequently"
-    ch20_sometimes = st.sidebar.checkbox("Sometimes")
+    ch20_sometimes = st.checkbox("Sometimes")
     if ch20_sometimes:
       ch20 = "Sometimes"
-    ch20_no = st.sidebar.checkbox("Never")
+    ch20_no = st.checkbox("Never")
     if ch20_no:
       ch20 = "No"
 
-    faf = st.sidebar.number_input("How frequently do you exercise each day?", 0, 3, 2)
-    ch2o = st.sidebar.select_slider("How often do you drink water each day? (3 is frequently or about 6-8 cups a day, 2 is less frequently meaning 3-5 cups a day, 1 is 1-2 cups a day, and 0 is none)", options=[0, 1, 2, 3])
+    faf = st.number_input("How frequently do you exercise each day?", 0, 3, 2)
+    ch2o = st.select_slider("How often do you drink water each day? (3 is frequently or about 6-8 cups a day, 2 is less frequently meaning 3-5 cups a day, 1 is 1-2 cups a day, and 0 is none)", options=[0, 1, 2, 3])
     
-    calc_question = st.sidebar("Do you frequently consume alcohol? (Frequently meaning 3 or more glases a day)")
-    calc_frequently = st.sidebar.checkbox("Frequently")
-    calc_sometimes = st.sidebar.checkbox("Sometimes")
-    calc_no = st.sidebar.checkbox("Never")
+    calc_question = "Do you frequently consume alcohol? (Frequently meaning 3 or more glases a day)"
+    calc_frequently = st.checkbox("Frequently")
+    calc_sometimes = st.checkbox("Sometimes")
+    calc_no = st.checkbox("Never")
 
-    smoke_question = st.sidebar("Do you smoke?")
-    smoke_yes = st.sidebar.checkbox("Yes")
+    smoke_question = "Do you smoke?"
+    smoke_yes = st.checkbox("Yes")
     if smoke_yes:
       smoke = 1
-    smoke_no = st.sidebar.checkbox("No")
+    smoke_no = st.checkbox("No")
     if smoke_no:
       smoke = 0
     
-    transportation_question = st.sidebar("What mode of transportation do you generally take each day?", options=transport_options)
-    mtrans_bike = st.sidebar.checkbox("Bike")
-    mtrans_motorbike = st.sidebar.checkbox("Motorbike")
-    mtrans_public = st.sidebar.checkbox("Public Transportation")
-    mtrans_walk = st.sidebar.checkbox("Walking")
-    mtrans_other = st.sidebar.checkbox("Other")
+    transportation_question = "What mode of transportation do you generally take each day?"
+    mtrans_bike = st.checkbox("Bike")
+    mtrans_motorbike = st.checkbox("Motorbike")
+    mtrans_public = st.checkbox("Public Transportation")
+    mtrans_walk = st.checkbox("Walking")
+    mtrans_other = st.checkbox("Other")
 
     #Load model
     with open(model_path, 'rb') as model_file:
