@@ -87,8 +87,8 @@ def main():
         loaded_model = pickle.load(model_file)
 
     # Make predictions with the loaded model
-    st.form_submit_button("Predict")
-    if st.form_submit_button("Predict"):
+    st.button("Predict")
+    if st.button("Predict"):
       user_data = pd.DataFrame({
         'Age': [age],
         'Height': [height],
