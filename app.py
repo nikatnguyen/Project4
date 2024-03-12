@@ -32,10 +32,10 @@ def main():
     gender_question = st.write("What is your sex assigned at birth?")
     male = st.checkbox("Male", key="male")
     if male:
-      gender = True
+      gender = "Male"
     female = st.checkbox("Female", key="fem")
     if female:
-      gender = False
+      gender = "Female"
     age = st.number_input("How old are you?", 0.0, 100.0, 50.0)
     height = st.number_input("What is your height in meters?", 0.0, 2.0)
     weight = st.number_input("What is your weight in kilograms?", 0.0, 200.0, 50.0)
@@ -43,17 +43,26 @@ def main():
     favc_question = st.write("Do you frequently consume high caloric foods? (Frequently meaning 3 or more times a day)")
     favc_option_y = st.checkbox("Yes", key="favcy")
     if favc_option_y:
-      favc = 1
+      favc = "yes"
     favc_option_n = st.checkbox("No", key="favcn")
     if favc_option_n:
-      favc = 0
+      favc = "no"
     
     fcvc = st.select_slider("How frequently do you consume vegetables each day? (3 meaning at more than 2 servings a day, 2 meaning around 2 servings a day, 1 meaning one serving a day, 0 being none)", options=[0, 1, 2, 3])
     
     caec_question = st.write("How often do you consume food in between meals?")
+    caec_always = st.checkbox("Always", key="caeca")
+    if caec_always:
+       caec = "Always"                         
     caec_frequently = st.checkbox("Frequently", key="caecf")
+    if caec_frequently:
+       caec = "Frequently"
     caec_sometimes = st.checkbox("Sometimes", key="caecsome")
+    if caec_sometimes:
+       caec = "Sometimes"
     caec_no = st.checkbox("Never", key="caecno")
+    if caec_no:
+       caec = "no"
     
 
     faf = st.number_input("How frequently do you exercise each day?", 0, 3, 2)
@@ -62,33 +71,49 @@ def main():
     family_question = st.write("Do you have a family history with obesity?")
     family_true = st.checkbox("Yes", key="famtrue")
     if family_true:
-      family = True
+      family = "yes"
     family_false = st.checkbox("No", key="famfalse")
     if family_false:
-       family = False
+       family = "no"
     family_unsure = st.checkbox("Unsure", key="famunsure")
     if family_unsure:
-       family = False
+       family = "no"
     
     calc_question = st.write("Do you frequently consume alcohol? (Frequently meaning 3 or more glases a day)")
     calc_frequently = st.checkbox("Frequently", key="calcfreq")
+    if calc_frequently:
+       calc = "Frequently"
     calc_sometimes = st.checkbox("Sometimes", key="caclsome")
+    if calc_sometimes:
+       calc = "Sometimes"
     calc_no = st.checkbox("Never", key="calcno")
+    if calc_no:
+       calc = "no"
 
     smoke_question = st.write("Do you smoke?")
     smoke_yes = st.checkbox("Yes", key="smokey")
     if smoke_yes:
-      smoke = 1
+      smoke = "yes"
     smoke_no = st.checkbox("No", key="smokeno")
     if smoke_no:
-      smoke = 0
+      smoke = "no"
     
     transportation_question = st.write("What mode of transportation do you generally take each day?")
     mtrans_bike = st.checkbox("Bike", key="bike")
+    if mtrans_bike:
+       mtrans = "Bike"
     mtrans_motorbike = st.checkbox("Motorbike", key="motorbike")
+    if mtrans_motorbike:
+       mtrans = "Motorbike"
     mtrans_public = st.checkbox("Public Transportation", key="publictrans")
+    if mtrans_public:
+       mtrans = "Public_Transportation"
     mtrans_walk = st.checkbox("Walking", key="walk")
-    mtrans_other = st.checkbox("Other", key="other")
+    if mtrans_walk:
+       mtrans = "Walking"
+    mtrans_car = st.checkbox("Automobile", key="car")
+    if mtrans_car:
+       mtrans = "Automobile"
 
     #Load model
     with open(fin_model_path, 'rb') as model_file:
@@ -98,26 +123,19 @@ def main():
     # Make predictions with the loaded model
     if st.button("Predict"):
       user_data = pd.DataFrame({
+        'Gender': [male],
         'Age': [age],
         'Height': [height],
         'Weight': [weight],
+        'family_history_with_overweight_yes': [family],
+        'FAVC': [favc],
         'FCVC': [fcvc],
+        'CAEC': [caec],
+        'SMOKE': [smoke],
         'CH2O': [ch2o],
         'FAF': [faf],
-        'Gender_Male': [male],
-        'family_history_with_overweight_yes': [family],
-        'FAVC_yes': [favc],
-        "CAEC_Frequently": [caec_frequently],
-        "CALC_Sometimes":  [caec_sometimes],
-        "CAEC_no": [caec_no],
-        "SMOKE_yes":  [smoke],
-        "CALC_Frequently":  [calc_frequently],
-        "CALC_Sometimes":  [calc_sometimes],
-        "CALC_no":  [calc_no],
-        "MTRANS_Bike":  [mtrans_bike],
-        "MTRANS_Motorbike":  [mtrans_motorbike],
-        "MTRANS_Public_Transportation":  [mtrans_public],
-        "MTRANS_Walking":  [mtrans_walk] })
+        'CALC': [calc],
+        "MTRANS": [mtrans]})
       combined_df = pd.concat([original_data, user_data], axis = 0)
       combined_df = pd.get_dummies(combined_df, drop_first = True)
       user_data = combined_df.iloc[-1, :]
