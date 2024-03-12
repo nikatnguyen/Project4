@@ -21,8 +21,9 @@ scaler_path = 'scaler.pkl'
 def main():
 
     st.title("Predicting Obesity Using Machine Learning Model")
-    st.write("""This app allows you to predict an obesity diagnostic using a series of questions based on a dataset taken from Kaggle
+    st.write("""This app allows you to predict an obesity diagnostic using a series of questions based on a dataset taken from Kaggle surveying people ages 14-61 from Mexico, Peru, and Columbia with diverse eating habits and physical conditions.  
     """)
+    st.write("""DISCLAIMER: This app is designed for users concerned about their physical health, but it should not be taken as a formal medical diagnosis. Consult your doctor or see linked resources at the bottom of this questionnaire for more information""")
 
     # Sidebar with user input
     st.header("Questions")
@@ -157,6 +158,14 @@ def main():
       if prediction == 5:
         st.write("Overweight Level")
 
+    st.header("Resources For More Information")
+    st.markdown('- [The Impact of Obesity on Your Body (American Society for Metabolic and Bariatric Surgery)](https://asmbs.org/patients/impact-of-obesity/)', unsafe_allow_html=True)
+    st.markdown('- [Understanding Obesity (Obesity Action Coalition)](https://www.obesityaction.org/get-educated/public-resources/brochures-guides/understanding-obesity-brochure/)', unsafe_allow_html=True)
+    st.markdown('- [Why Does Weight Bias Matter (Obesity Care Week)](https://www.obesitycareweek.org/wp-content/uploads/2023/02/OCW-Why-Does-Weight-Bias-Matter-1.pdf)', unsafe_allow_html=True)
+    st.markdown('- [Access to Care (Obesity Care Week)](https://www.obesitycareweek.org/wp-content/uploads/2023/02/OCW-Access-to-Care.pdf)', unsafe_allow_html=True)
+    st.markdown('- [The Benefits of Treatment (Obesity Care Week)](https://www.obesitycareweek.org/wp-content/uploads/2023/02/OCW-Benefits-of-Treatment-1.pdf)', unsafe_allow_html=True)
+    st.markdown('- [Obesity Prevention Strategies and Guidelines (CDC)](https://www.cdc.gov/obesity/resources/strategies-guidelines.html)', unsafe_allow_html=True)
+    
     st.write("""Dataset from Kaggle: https://www.kaggle.com/datasets/aravindpcoder/obesity-or-cvd-risk-classifyregressorcluster
     """) 
 if __name__ == "__main__":
