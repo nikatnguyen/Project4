@@ -24,7 +24,7 @@ def main():
     """)
 
     # Sidebar with user input
-    st.header("Questionnaire")
+    st.header("Questions")
 
     
     # Example input features (you can replace this with your actual input fields)
@@ -49,13 +49,13 @@ def main():
     caec_no = st.checkbox("Never")
     
     ch20_question = st.write("How often do you drink water each day?")
-    ch20_frequently = st.checkbox("Frequently")
+    ch20_frequently = st.checkbox("Frequently", key="ch20freq")
     if ch20_frequently: 
       ch20 = "Frequently"
-    ch20_sometimes = st.checkbox("Sometimes")
+    ch20_sometimes = st.checkbox("Sometimes", key="ch20sometimes")
     if ch20_sometimes:
       ch20 = "Sometimes"
-    ch20_no = st.checkbox("Never")
+    ch20_no = st.checkbox("Never", key="ch20no")
     if ch20_no:
       ch20 = "No"
 
@@ -63,9 +63,9 @@ def main():
     ch2o = st.select_slider("How often do you drink water each day? (3 is frequently or about 6-8 cups a day, 2 is less frequently meaning 3-5 cups a day, 1 is 1-2 cups a day, and 0 is none)", options=[0, 1, 2, 3])
     
     calc_question = st.write("Do you frequently consume alcohol? (Frequently meaning 3 or more glases a day)")
-    calc_frequently = st.checkbox("Frequently")
-    calc_sometimes = st.checkbox("Sometimes")
-    calc_no = st.checkbox("Never")
+    calc_frequently = st.checkbox("Frequently", key="calcfreq")
+    calc_sometimes = st.checkbox("Sometimes", key="caclsome")
+    calc_no = st.checkbox("Never", key="calcno")
 
     smoke_question = st.write("Do you smoke?")
     smoke_yes = st.checkbox("Yes")
